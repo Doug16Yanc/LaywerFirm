@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Laywer {
     private Long codeLaywer;
+    private Long oabLaywer;
     private String nameLaywer;
     private String address;
     private String district;
@@ -13,8 +14,9 @@ public class Laywer {
 
     public Laywer() {
     }
-    public Laywer(String codeLawyer, String nameLaywer, String address, String district, String zipCode, String telephone, String email){
+    public Laywer(Long codeLawyer, Long oabLaywer, String nameLaywer, String address, String district, String zipCode, String telephone, String email){
         this.codeLaywer = codeLaywer;
+        this.oabLaywer = oabLaywer;
         this.nameLaywer = nameLaywer;
         this.address = address;
         this.district = district;
@@ -29,6 +31,14 @@ public class Laywer {
 
     public void setCodeLaywer(Long codeLaywer) {
         this.codeLaywer = codeLaywer;
+    }
+
+    public Long getOabLaywer() {
+        return oabLaywer;
+    }
+
+    public void setOabLaywer(Long oabLaywer) {
+        this.oabLaywer = oabLaywer;
     }
 
     public String getNameLaywer() {
