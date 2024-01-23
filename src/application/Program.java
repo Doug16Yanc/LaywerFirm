@@ -9,7 +9,7 @@ public class Program {
     }
     public static void doFirstInteraction(){
         println("Welcome to lawyer firm.\n");
-        System.out.println("Who are you in our system?\n" +
+        System.out.println("Who are you in our system?\n\n" +
                 "B/b - Boss laywer\n" +
                 "L/l - A laywer, but not the boss\n" +
                 "P/p - Another person\n");

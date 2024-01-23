@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import static services.ServiceLaywer.idMap;
-
 public class GenerationImplementation implements Generation {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
