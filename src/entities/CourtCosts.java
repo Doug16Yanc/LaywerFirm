@@ -1,5 +1,7 @@
 package entities;
 
+import enumerations.CourtCostSituation;
+
 import java.time.LocalDateTime;
 
 public class CourtCosts {
@@ -7,13 +9,16 @@ public class CourtCosts {
     private String courtCostDescription;
     private double courtCostValue;
 
+    private CourtCostSituation courtCostSituation;
+
     public CourtCosts(){
 
     }
-    public CourtCosts(LocalDateTime date, String courtCostDescription, double courtCostValue){
+    public CourtCosts(LocalDateTime date, String courtCostDescription, double courtCostValue, CourtCostSituation courtCostSituation){
         this.date = date;
         this.courtCostDescription = courtCostDescription;
         this.courtCostValue = courtCostValue;
+        this.courtCostDescription = courtCostDescription;
     }
 
     public LocalDateTime getDate() {
@@ -39,4 +44,13 @@ public class CourtCosts {
     public void setCourtCostValue(double courtCostValue) {
         this.courtCostValue = courtCostValue;
     }
+
+    public CourtCostSituation getCourtCostSituation() {
+        return courtCostSituation;
+    }
+
+    public void setCourtCostSituation(CourtCostSituation courtCostSituation) {
+        this.courtCostSituation = courtCostSituation;
+    }
 }
+
