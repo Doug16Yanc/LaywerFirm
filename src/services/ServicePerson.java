@@ -5,8 +5,10 @@ import utilities.Utility;
 
 import java.util.*;
 
+import static utilities.Utility.println;
+import static utilities.Utility.sc;
+
 public class ServicePerson {
-    static Scanner sc = new Scanner(System.in);
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
     private static final List<Person> persons = new ArrayList<>();
@@ -15,7 +17,7 @@ public class ServicePerson {
         System.out.println("What type person will be recorded?\n L/l - Legal person \n N/n - Natural person\n");
         String option = sc.nextLine();
 
-        switch (option){
+        switch (option.toLowerCase()){
             case "l" -> {
                 ServiceLegal.recordLegalPerson();
             }
@@ -23,7 +25,7 @@ public class ServicePerson {
                 ServiceNatural.recordNaturalPerson();
             }
             default -> {
-                Utility.printMessage("Option no-existent.\n");
+                println("Option no-existent.\n");
             }
         }
     }

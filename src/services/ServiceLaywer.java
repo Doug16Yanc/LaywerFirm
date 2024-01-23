@@ -1,17 +1,17 @@
 package services;
 
 import entities.Laywer;
-import jdk.jshell.execution.Util;
-import utilities.Utility;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import static utilities.Utility.println;
+import static utilities.Utility.sc;
+
 public class ServiceLaywer {
 
-    static Scanner sc = new Scanner(System.in);
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
     private static final Map<Laywer, Long> laywers = new HashMap<>();
@@ -86,7 +86,7 @@ public class ServiceLaywer {
                 }
             }
             default -> {
-                Utility.printMessage("Option no-existent.\n");
+                println("Option no-existent.\n");
             }
         }
         return option;
