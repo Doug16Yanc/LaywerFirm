@@ -1,24 +1,24 @@
 package entities;
 
-public class BossLaywer {
-    private String nameLaywer;
+public class BossLawyer {
+    private String nameLawyer;
     private String username;
     private String password;
 
-    public BossLaywer() {
+    public BossLawyer() {
     }
-    public BossLaywer(String nameLaywer, String username, String password){
-        this.nameLaywer = nameLaywer;
+    public BossLawyer(String nameLawyer, String username, String password){
+        this.nameLawyer = nameLawyer;
         this.username = username;
         this.password = password;
     }
 
-    public String getNameLaywer() {
-        return nameLaywer;
+    public String getNameLawyer() {
+        return nameLawyer;
     }
 
-    public void setNameLaywer(String nameLaywer) {
-        this.nameLaywer = nameLaywer;
+    public void setNameLawyer(String nameLawyer) {
+        this.nameLawyer = nameLawyer;
     }
 
     public String getUsername() {

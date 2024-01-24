@@ -1,6 +1,6 @@
 package services;
 
-import entities.Laywer;
+import entities.Lawyer;
 import repositories.GenerationImplementation;
 
 import java.util.HashMap;
@@ -9,22 +9,22 @@ import java.util.Map;
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
 
-public class ServiceLaywer {
+public class ServiceLawyer {
 
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    private static final Map<Laywer, Long> laywers = new HashMap<>();
+    private static final Map<Lawyer, Long> lawyers = new HashMap<>();
 
-    public static void doLoginLaywer(){
+    public static void doLoginLawyer(){
         println("Login");
     }
-    public static int recordLaywer(){
+    public static int recordLawyer(){
         /*
         Utility.printMessage("Welcome to the lawyer registration page in the system. Please fill out the form" +
                 " below to register as a lawyer. If you already have an account, you can log in here. " +
                 "Thank you for choosing our platform.\"); */
 
-        Long codeLaywer = (long) GenerationImplementation.generateIdLaywer();
+        Long codeLawyer = (long) GenerationImplementation.generateIdLawyer();
 
         System.out.println("OAB laywer:");
         Long oab = sc.nextLong();
@@ -42,23 +42,23 @@ public class ServiceLaywer {
         System.out.println("Email: ");
         String email = sc.nextLine();
 
-        Laywer laywer = new Laywer(codeLaywer, oab, name, address, district, zipcode, telephone, email);
+        Lawyer lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
 
-        laywers.put(laywer, codeLaywer);
+        lawyers.put(lawyer, codeLawyer);
 
-        return Math.toIntExact(codeLaywer);
+        return Math.toIntExact(codeLawyer);
     }
 
     public static int searchLawyer(){
-        System.out.println("Enter a option to search the laywer:\n 1 - Code laywer \n 2 - OAB laywer \n\n");
+        System.out.println("Enter a option to search the laywer:\n 1 - Code lawyer \n 2 - OAB lawyer \n\n");
         int option = sc.nextInt();
 
         switch(option){
             case 1 -> {
-                System.out.println("Enter a laywer code:");
-                Long laywerCode = sc.nextLong();
+                System.out.println("Enter a lawyer code:");
+                Long lawyerCode = sc.nextLong();
 
-                if (laywers.containsKey(laywerCode)){
+                if (lawyers.containsKey(lawyerCode)){
                     return 1;
                 }
                 else{
@@ -69,7 +69,7 @@ public class ServiceLaywer {
                 System.out.println("Enter OAB code:");
                 Long oab = sc.nextLong();
 
-                if (laywers.containsKey(oab)){
+                if (lawyers.containsKey(oab)){
                     return 1;
                 }
                 else{
@@ -82,17 +82,17 @@ public class ServiceLaywer {
         }
         return option;
     }
-    public static String consultLaywer(Laywer laywer){
+    public static String consultLawyer(Lawyer lawyer){
         searchLawyer();
         return "Data" +
-                " > Code laywer=" + laywer.getCodeLaywer() + "\n" +
-                " > OAB laywer=" + laywer.getOabLaywer()+ "\n" +
-                " > name laywer : " + laywer.getNameLaywer() + "\n" +
-                " > address : " + laywer.getAddress() +
-                " > district : " + laywer.getDistrict() + "\n" +
-                " > zip code : " + laywer.getZipCode() + "\n" +
-                " > telephone number: " + laywer.getTelephone() + "\n" +
-                " > email : " + laywer.getEmail() +
+                " > Code lawyer=" + lawyer.getCodeLawyer() + "\n" +
+                " > OAB lawyer=" + lawyer.getOabLawyer()+ "\n" +
+                " > name lawyer : " + lawyer.getNameLawyer() + "\n" +
+                " > address : " + lawyer.getAddress() +
+                " > district : " + lawyer.getDistrict() + "\n" +
+                " > zip code : " + lawyer.getZipCode() + "\n" +
+                " > telephone number: " + lawyer.getTelephone() + "\n" +
+                " > email : " + lawyer.getEmail() +
                 '}';
 
     }

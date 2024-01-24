@@ -1,7 +1,7 @@
 package application;
 
-import services.ServiceBossLaywer;
-import services.ServiceLaywer;
+import services.ServiceLawyer;
+import services.ServiceBossLawyer;
 import services.ServicePerson;
 
 import static utilities.Utility.println;
@@ -14,17 +14,17 @@ public class Program {
     public static void doFirstInteraction(){
         println("Welcome to lawyer firm.\n");
         System.out.println("Who are you in our system?\n\n" +
-                "B/b - Boss laywer\n" +
-                "L/l - A laywer, but not the boss\n" +
+                "B/b - Boss lawyer\n" +
+                "L/l - A lawyer, but not the boss\n" +
                 "P/p - Another person\n");
         String option = sc.nextLine();
 
         switch(option.toLowerCase()){
             case "b" -> {
-                ServiceBossLaywer.doLoginBossLaywer();
+                ServiceBossLawyer.doLoginBossLawyer();
             }
             case "l" -> {
-                ServiceLaywer.doLoginLaywer();
+                ServiceLawyer.doLoginLawyer();
             }
             case "p" -> {
                 ServicePerson.defineTypePerson();

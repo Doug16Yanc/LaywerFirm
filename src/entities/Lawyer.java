@@ -1,23 +1,21 @@
 package entities;
 
-import java.util.Objects;
-
-public class Laywer {
-    private Long codeLaywer;
-    private Long oabLaywer;
-    private String nameLaywer;
+public class Lawyer {
+    private Long codeLawyer;
+    private Long oabLawyer;
+    private String nameLawyer;
     private String address;
     private String district;
     private String zipCode;
     private String telephone;
     private String email;
 
-    public Laywer() {
+    public Lawyer() {
     }
-    public Laywer(Long codeLawyer, Long oabLaywer, String nameLaywer, String address, String district, String zipCode, String telephone, String email){
-        this.codeLaywer = codeLaywer;
-        this.oabLaywer = oabLaywer;
-        this.nameLaywer = nameLaywer;
+    public Lawyer(Long codeLawyer, Long oabLawyer, String nameLawyer, String address, String district, String zipCode, String telephone, String email){
+        this.codeLawyer = codeLawyer;
+        this.oabLawyer = oabLawyer;
+        this.nameLawyer = nameLawyer;
         this.address = address;
         this.district = district;
         this.zipCode = zipCode;
@@ -25,28 +23,28 @@ public class Laywer {
         this.email = email;
     }
 
-    public Long getCodeLaywer() {
-        return codeLaywer;
+    public Long getCodeLawyer() {
+        return codeLawyer;
     }
 
-    public void setCodeLaywer(Long codeLaywer) {
-        this.codeLaywer = codeLaywer;
+    public void setCodeLawyer(Long codeLawyer) {
+        this.codeLawyer = codeLawyer;
     }
 
-    public Long getOabLaywer() {
-        return oabLaywer;
+    public Long getOabLawyer() {
+        return oabLawyer;
     }
 
-    public void setOabLaywer(Long oabLaywer) {
-        this.oabLaywer = oabLaywer;
+    public void setOabLawyer(Long oabLawyer) {
+        this.oabLawyer = oabLawyer;
     }
 
-    public String getNameLaywer() {
-        return nameLaywer;
+    public String getNameLawyer() {
+        return nameLawyer;
     }
 
-    public void setNameLaywer(String nameLaywer) {
-        this.nameLaywer = nameLaywer;
+    public void setNameLawyer(String nameLawyer) {
+        this.nameLawyer = nameLawyer;
     }
 
     public String getAddress() {
