@@ -5,7 +5,6 @@ import entities.Laywer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 import static utilities.Utility.println;
 import static utilities.Utility.sc;

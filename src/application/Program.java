@@ -1,5 +1,7 @@
 package application;
 
+import services.ServiceBossLaywer;
+
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
 
@@ -17,7 +19,7 @@ public class Program {
 
         switch(option.toLowerCase()){
             case "b" -> {
-
+                ServiceBossLaywer.doLoginBossLaywer();
             }
             case "l" -> {
 
