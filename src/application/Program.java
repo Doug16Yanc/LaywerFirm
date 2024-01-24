@@ -1,6 +1,8 @@
 package application;
 
 import services.ServiceBossLaywer;
+import services.ServiceLaywer;
+import services.ServicePerson;
 
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
@@ -22,10 +24,10 @@ public class Program {
                 ServiceBossLaywer.doLoginBossLaywer();
             }
             case "l" -> {
-
+                ServiceLaywer.doLoginLaywer();
             }
             case "p" -> {
-
+                ServicePerson.defineTypePerson();
             }
             default -> {
                println("Option no-existent.\n");

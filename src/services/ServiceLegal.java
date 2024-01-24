@@ -11,6 +11,10 @@ public class ServiceLegal {
 
     private static final Map<LegalPerson, Long> legalPersons = new HashMap<>();
 
+    public static void doLoginLegalPerson(){
+
+    }
+
     public static int recordLegalPerson(){
         return 1;
     }

@@ -5,7 +5,6 @@ import entities.BossLaywer;
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
 
-
 public class ServiceBossLaywer {
     public static void doLoginBossLaywer(){
         int attempts = 3;
@@ -31,5 +30,7 @@ public class ServiceBossLaywer {
     }
     public static void doInteractionBossLaywer(BossLaywer bossLaywer){
         println("Welcome, dear " + bossLaywer.getNameLaywer());
+
+
     }
 }

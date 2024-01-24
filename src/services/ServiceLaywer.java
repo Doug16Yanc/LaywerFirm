@@ -1,10 +1,10 @@
 package services;
 
 import entities.Laywer;
+import repositories.GenerationImplementation;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
@@ -15,16 +15,8 @@ public class ServiceLaywer {
 
     private static final Map<Laywer, Long> laywers = new HashMap<>();
 
-    public static int generateId() {
-        Random random = new Random();
-        Long enter;
-
-        do {
-            enter = (long) (random.nextInt(900000) + 100000);
-        } while (idMap.containsKey(enter));
-
-        idMap.put(enter, true);
-        return Math.toIntExact(enter);
+    public static void doLoginLaywer(){
+        println("Login");
     }
     public static int recordLaywer(){
         /*
@@ -32,7 +24,7 @@ public class ServiceLaywer {
                 " below to register as a lawyer. If you already have an account, you can log in here. " +
                 "Thank you for choosing our platform.\"); */
 
-        Long codeLaywer = (long) generateId();
+        Long codeLaywer = (long) GenerationImplementation.generateIdLaywer();
 
         System.out.println("OAB laywer:");
         Long oab = sc.nextLong();
