@@ -28,25 +28,31 @@ public class ServiceLawyer {
 
         System.out.println("OAB laywer:");
         Long oab = sc.nextLong();
-        sc.nextLine();
-        System.out.println("Name: ");
-        String name = sc.nextLine();
-        System.out.println("Address :");
-        String address = sc.nextLine();
-        System.out.println("District: ");
-        String district = sc.nextLine();
-        System.out.println("Zip code: ");
-        String zipcode = sc.nextLine();
-        System.out.println("telephone number: ");
-        String telephone = sc.nextLine();
-        System.out.println("Email: ");
-        String email = sc.nextLine();
 
-        Lawyer lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
+        if(!lawyers.containsKey(oab)){
+            sc.nextLine();
+            System.out.println("Name: ");
+            String name = sc.nextLine();
+            System.out.println("Address :");
+            String address = sc.nextLine();
+            System.out.println("District: ");
+            String district = sc.nextLine();
+            System.out.println("Zip code: ");
+            String zipcode = sc.nextLine();
+            System.out.println("telephone number: ");
+            String telephone = sc.nextLine();
+            System.out.println("Email: ");
+            String email = sc.nextLine();
 
-        lawyers.put(lawyer, codeLawyer);
+            Lawyer lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
 
+            lawyers.put(lawyer, codeLawyer);
+        }
+        else{
+            println("Sorry, but this lawyer was already registered in our system.");
+        }
         return Math.toIntExact(codeLawyer);
+
     }
 
     public static int searchLawyer(){
