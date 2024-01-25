@@ -102,4 +102,18 @@ public class ServiceLawyer {
                 '}';
 
     }
+    public static void listLawyers(Lawyer lawyer){
+        for (Map.Entry<Lawyer, Long> entry : lawyers.entrySet()){
+            println("Data" +
+                    " > Code lawyer=" + lawyer.getCodeLawyer() + "\n" +
+                    " > OAB lawyer=" + lawyer.getOabLawyer()+ "\n" +
+                    " > name lawyer : " + lawyer.getNameLawyer() + "\n" +
+                    " > address : " + lawyer.getAddress() +
+                    " > district : " + lawyer.getDistrict() + "\n" +
+                    " > zip code : " + lawyer.getZipCode() + "\n" +
+                    " > telephone number: " + lawyer.getTelephone() + "\n" +
+                    " > email : " + lawyer.getEmail() +
+                    '}');
+        }
+    }
 }

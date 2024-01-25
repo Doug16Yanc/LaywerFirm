@@ -1,6 +1,7 @@
 package services;
 
 import entities.BossLawyer;
+import entities.Lawyer;
 
 import static application.Program.doFirstInteraction;
 import static utilities.Utility.println;
@@ -60,19 +61,31 @@ public class ServiceBossLawyer {
 
                 }
                 case 3 -> {
-
+                    ServiceLawyer.recordLawyer();
                 }
                 case 4 -> {
-
+                    ServiceLawyer.consultLawyer(new Lawyer());
                 }
                 case 5 -> {
-
                 }
                 case 6 -> {
-
+                    ServiceLawyer.listLawyers(new Lawyer());
                 }
                 case 7 -> {
+                    System.out.println("What kind of person will be consulted? ?\n L/l - Legal person \n N/n - Natural person\n");
+                    String personType = sc.nextLine();
 
+                    switch (personType.toLowerCase()){
+                        case "l" -> {
+
+                        }
+                        case "n" -> {
+
+                        }
+                        default -> {
+                            System.out.println("Option no-existent.\n");
+                        }
+                    }
                 }
                 case 8 -> {
 
