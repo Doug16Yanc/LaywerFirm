@@ -7,4 +7,8 @@ public interface Generation {
     public static int generateIdPerson() {
         return 1;
     }
+
+    public static int generateIdProcess(){
+        return 1;
+    }
 }

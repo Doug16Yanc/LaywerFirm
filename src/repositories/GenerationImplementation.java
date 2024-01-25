@@ -29,4 +29,15 @@ public class GenerationImplementation implements Generation {
         idMap.put(enter, true);
         return Math.toIntExact(enter);
     }
+    public static int generateIdProcess(){
+        Random random = new Random();
+        Long enter;
+
+        do {
+            enter = (long) (random.nextInt(10000) + 100000000);
+        } while (idMap.containsKey(enter));
+
+        idMap.put(enter, true);
+        return Math.toIntExact(enter);
+    }
 }

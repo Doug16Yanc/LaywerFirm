@@ -3,11 +3,24 @@ package entities;
 import enumerations.ProcessSituation;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
-public class Process {
+public class Process{
     private Long codeProcess;
     private LocalDateTime apertureProcess;
     private LocalDateTime conclusionProcess;
+
+    @Override
+    public String toString() {
+        return "Process{" +
+                "codeProcess=" + codeProcess +
+                ", apertureProcess=" + apertureProcess +
+                ", conclusionProcess=" + conclusionProcess +
+                ", descriptionProcess='" + descriptionProcess + '\'' +
+                ", processSituation=" + processSituation +
+                '}';
+    }
+
     private String descriptionProcess;
     private ProcessSituation processSituation;
 
