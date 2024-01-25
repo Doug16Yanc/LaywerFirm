@@ -44,9 +44,24 @@ public class ServiceProcess {
             return 0;
         }
     }
-    public static int updateProcess(){
+    public static boolean updateProcess(){
         println("Process updates");
-        return 1;
+        System.out.println("1 - Conclusion date\n" +
+                "           2 - Process situation\n");
+        int option = sc.nextInt();
+
+        switch (option){
+            case 1 -> {
+
+            }
+            case 2 -> {
+
+            }
+            default -> {
+                println("Option no-existent.\n");
+            }
+        }
+        return true;
     }
     public static void listProcess(Process process){
         for (Process entry : processes.keySet()){

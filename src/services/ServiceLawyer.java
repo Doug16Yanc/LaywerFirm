@@ -3,7 +3,9 @@ package services;
 import entities.Lawyer;
 import repositories.GenerationImplementation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static utilities.Utility.println;
@@ -13,12 +15,12 @@ public class ServiceLawyer {
 
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    private static final Map<Lawyer, Long> lawyers = new HashMap<>();
+    private static final Map<Long, List<Lawyer>> lawyers = new HashMap<>();
 
     public static void doLoginLawyer(){
         println("Login");
     }
-    public static int recordLawyer(){
+    public static int recordLawyer() {
         /*
         Utility.printMessage("Welcome to the lawyer registration page in the system. Please fill out the form" +
                 " below to register as a lawyer. If you already have an account, you can log in here. " +
@@ -29,7 +31,8 @@ public class ServiceLawyer {
         System.out.println("OAB laywer:");
         Long oab = sc.nextLong();
 
-        if(!lawyers.containsKey(oab)){
+        Lawyer lawyer = null;
+        if (!lawyers.containsKey(oab)) {
             sc.nextLine();
             System.out.println("Name: ");
             String name = sc.nextLine();
@@ -44,15 +47,28 @@ public class ServiceLawyer {
             System.out.println("Email: ");
             String email = sc.nextLine();
 
-            Lawyer lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
+            lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
 
-            lawyers.put(lawyer, codeLawyer);
-        }
-        else{
+            lawyers.computeIfAbsent(codeLawyer, k -> new ArrayList<>()).add(lawyer);
+            lawyers.computeIfAbsent(oab, k -> new ArrayList<>()).add(lawyer);
+
+        } else {
             println("Sorry, but this lawyer was already registered in our system.");
         }
+        proofRecord(lawyer);
         return Math.toIntExact(codeLawyer);
 
+    }
+    public static void proofRecord(Lawyer lawyer){
+        println("Data\n" +
+                " > Code lawyer : " + lawyer.getCodeLawyer() + "\n" +
+                " > OAB lawyer : " + lawyer.getOabLawyer()+ "\n" +
+                " > name lawyer : " + lawyer.getNameLawyer() + "\n" +
+                " > address : " + lawyer.getAddress() + "\n" +
+                " > district : " + lawyer.getDistrict() + "\n" +
+                " > zip code : " + lawyer.getZipCode() + "\n" +
+                " > telephone number: " + lawyer.getTelephone() + "\n" +
+                " > email : " + lawyer.getEmail());
     }
 
     public static int searchLawyer(){
@@ -65,9 +81,14 @@ public class ServiceLawyer {
                 Long lawyerCode = sc.nextLong();
 
                 if (lawyers.containsKey(lawyerCode)){
+                    List<Lawyer> lawyersList = lawyers.get(lawyerCode);
+                    for (Lawyer lawyer : lawyersList){
+                        println("Laywer " + lawyer.getNameLawyer() + " found.\n");
+                    }
                     return 1;
                 }
                 else{
+                    println("Sorry, not found.\n");
                     return 0;
                 }
             }
@@ -76,9 +97,14 @@ public class ServiceLawyer {
                 Long oab = sc.nextLong();
 
                 if (lawyers.containsKey(oab)){
+                    List<Lawyer> lawyersList = lawyers.get(oab);
+                    for (Lawyer lawyer : lawyersList){
+                        println("Laywer " + lawyer.getNameLawyer() + " found.\n");
+                    }
                     return 1;
                 }
                 else{
+                    println("Sorry, not found.\n");
                     return 0;
                 }
             }
@@ -103,7 +129,7 @@ public class ServiceLawyer {
 
     }
     public static void listLawyers(Lawyer lawyer){
-        for (Map.Entry<Lawyer, Long> entry : lawyers.entrySet()){
+        for (Map.Entry<Long, List<Lawyer>> entry : lawyers.entrySet()){
             println("Data" +
                     " > Code lawyer=" + lawyer.getCodeLawyer() + "\n" +
                     " > OAB lawyer=" + lawyer.getOabLawyer()+ "\n" +
