@@ -75,6 +75,65 @@ public class ServiceLawyer {
                 " > email : " + lawyer.getEmail());
     }
 
+    public static boolean loginLawyer(){
+        println("Enter your code lawyer in system or oab lawyer, so, you can enter with username and password:\n");
+
+        System.out.println("1-Code lawyer:\n2-OAB\n");
+        int option = sc.nextInt();
+
+        switch(option){
+            case 1 -> {
+                System.out.println("Enter code:");
+                Long code = sc.nextLong();
+
+                if (lawyers.containsKey(code)){
+                    println("Code found.\n");
+                }
+                else{
+                    println("Sorry, not found.\n");
+                }
+            }
+            case 2 -> {
+                System.out.println("Enter oab");
+                Long oab = sc.nextLong();
+
+                if (lawyers.containsKey(oab)){
+                    println("Oab found.\n");
+                }
+                else{
+                    println("Sorry, not found.\n");
+                }
+            }
+            default -> {
+                println("Option no-existent.\n");
+            }
+        }
+        return true;
+    }
+
+    public static int doLogin(){
+        int attempts = 3;
+        do{
+            System.out.println("Username:");
+            String username = sc.nextLine();
+
+            System.out.println("Password:");
+            String password = sc.nextLine();
+
+            if (lawyers.containsKey(username) && lawyers.containsKey(password)){
+                println("Login successfully!\n");
+            }
+            else{
+                println("Username or recognized not recognized.\n");
+                attempts--;
+            }
+            if (attempts == 0){
+                break;
+            }
+        } while(attempts > 0);
+        return 1;
+    }
+
     public static int searchLawyer(){
         System.out.println("Enter a option to search the laywer:\n 1 - Code lawyer \n 2 - OAB lawyer \n\n");
         int option = sc.nextInt();
