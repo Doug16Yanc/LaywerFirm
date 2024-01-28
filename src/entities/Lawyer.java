@@ -10,9 +10,12 @@ public class Lawyer {
     private String telephone;
     private String email;
 
+    private String username;
+    private String password;
+
     public Lawyer() {
     }
-    public Lawyer(Long codeLawyer, Long oabLawyer, String nameLawyer, String address, String district, String zipCode, String telephone, String email){
+    public Lawyer(Long codeLawyer, Long oabLawyer, String nameLawyer, String address, String district, String zipCode, String telephone, String email, String username, String password){
         this.codeLawyer = codeLawyer;
         this.oabLawyer = oabLawyer;
         this.nameLawyer = nameLawyer;
@@ -21,6 +24,8 @@ public class Lawyer {
         this.zipCode = zipCode;
         this.telephone = telephone;
         this.email = email;
+        this.username = username;
+        this.password = password;
     }
 
     public Long getCodeLawyer() {
@@ -87,4 +92,17 @@ public class Lawyer {
         this.email = email;
     }
 
+    public String getUsername(){return username;}
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

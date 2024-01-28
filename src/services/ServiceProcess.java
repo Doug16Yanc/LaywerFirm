@@ -4,7 +4,6 @@ import entities.Process;
 import enumerations.ProcessSituation;
 import repositories.GenerationImplementation;
 
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,9 +37,11 @@ public class ServiceProcess {
         Long code = sc.nextLong();
 
         if(processes.containsKey(code)){
+            println("Process " + code + " found.\n");
             return 1;
         }
         else{
+            println("Process not found.\n");
             return 0;
         }
     }
@@ -52,10 +53,12 @@ public class ServiceProcess {
 
         switch (option){
             case 1 -> {
+                System.out.println("Enter date:");
 
             }
             case 2 -> {
-
+                Process process = new Process();
+                process.setProcessSituation(ProcessSituation.Finished);
             }
             default -> {
                 println("Option no-existent.\n");

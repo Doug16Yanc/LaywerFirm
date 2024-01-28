@@ -46,8 +46,12 @@ public class ServiceLawyer {
             String telephone = sc.nextLine();
             System.out.println("Email: ");
             String email = sc.nextLine();
+            System.out.println("Username:");
+            String username = sc.nextLine();
+            System.out.println("Password:");
+            String password = sc.nextLine();
 
-            lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email);
+            lawyer = new Lawyer(codeLawyer, oab, name, address, district, zipcode, telephone, email, username, password);
 
             lawyers.computeIfAbsent(codeLawyer, k -> new ArrayList<>()).add(lawyer);
             lawyers.computeIfAbsent(oab, k -> new ArrayList<>()).add(lawyer);

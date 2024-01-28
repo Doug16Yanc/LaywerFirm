@@ -1,7 +1,6 @@
 package services;
 
 import entities.LegalPerson;
-import entities.Person;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +13,6 @@ public class ServiceLegal {
     public static void doLoginLegalPerson(){
 
     }
-
     public static int recordLegalPerson(){
         return 1;
     }
