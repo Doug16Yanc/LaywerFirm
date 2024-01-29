@@ -7,8 +7,8 @@ public class NaturalPerson extends Person {
 
     }
 
-    public NaturalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String ssn) {
-        super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson);
+    public NaturalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password, String ssn) {
+        super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson, password);
         this.ssn = ssn;
     }
 

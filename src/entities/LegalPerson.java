@@ -7,7 +7,8 @@ public class LegalPerson extends Person {
 
     }
 
-    public LegalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String ein) {
+    public LegalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password, String ein) {
+        super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson, password);
         this.ein = ein;
     }
 

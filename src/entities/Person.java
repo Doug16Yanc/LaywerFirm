@@ -7,17 +7,19 @@ public abstract class Person {
     private String cepPerson;
     private String telephonePerson;
     private String emailPerson;
+    private String password;
 
     public Person(){
 
     }
-    public Person(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson){
+    public Person(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password){
         this.idPerson = idPerson;
         this.namePerson = namePerson;
         this.districtPerson = districtPerson;
         this.cepPerson = cepPerson;
         this.telephonePerson = telephonePerson;
         this.emailPerson = emailPerson;
+        this.password = password;
     }
 
     public Long getIdPerson() {
@@ -66,5 +68,13 @@ public abstract class Person {
 
     public void setEmailPerson(String emailPerson) {
         this.emailPerson = emailPerson;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
