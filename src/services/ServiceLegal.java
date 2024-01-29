@@ -2,7 +2,9 @@ package services;
 
 import entities.LegalPerson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static utilities.Utility.println;
@@ -11,11 +13,12 @@ import static utilities.Utility.sc;
 public class ServiceLegal {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    private static final Map<LegalPerson, Long> legalPersons = new HashMap<>();
+    private static final Map<Long, List<LegalPerson>> legalPersons = new HashMap<>();
 
     public static void doLoginLegalPerson(){
         int attempts = 3;
-        println("Enter your ssn, so, you can enter with your password:\n");
+        println("Enter your ssn, so, you can enter with your password:\n" +
+                "You have only three chances.\n");
 
         do{
             System.out.println("SSN");
@@ -33,7 +36,10 @@ public class ServiceLegal {
         } while(attempts > 0);
 
     }
-    public static int recordLegalPerson(){
+    public static int recordLegalPerson(LegalPerson legalPerson){
+        legalPersons.computeIfAbsent(legalPerson.getIdPerson(), k -> new ArrayList<>()).add(legalPerson);
+        legalPersons.computeIfAbsent(legalPerson.getEin(), k -> new ArrayList<>()).add(legalPerson);
+
         return 1;
     }
     public static int searchLegalPerson(){

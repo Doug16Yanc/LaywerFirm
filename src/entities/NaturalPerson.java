@@ -12,7 +12,7 @@ public class NaturalPerson extends Person {
         this.ssn = ssn;
     }
 
-    public String getSsn() {
+    public Long getSsn() {
         return ssn;
     }
 

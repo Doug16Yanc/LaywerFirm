@@ -113,6 +113,7 @@ public class ServiceLawyer {
 
     public static int doLogin(){
         int attempts = 3;
+        println("You have only three chances.\n");
         do{
             System.out.println("Username:");
             String username = sc.nextLine();

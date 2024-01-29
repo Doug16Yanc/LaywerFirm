@@ -12,7 +12,7 @@ public class LegalPerson extends Person {
         this.ein = ein;
     }
 
-    public String getEin() {
+    public Long getEin() {
         return ein;
     }
 
