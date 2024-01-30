@@ -17,8 +17,22 @@ public class ServiceLawyer {
 
     private static final Map<Long, List<Lawyer>> lawyers = new HashMap<>();
 
-    public static void doLoginLawyer(){
-        println("Login");
+    public static void doValidationLawyer(){
+        println("Lawyer validation.\n");
+        System.out.println("Have you already registered in our system?\n Y/y - Yes\n N/n - Not\n");
+        String option = sc.nextLine();
+
+        switch(option.toLowerCase()){
+            case "y" -> {
+                doLogin();
+            }
+            case "n" -> {
+                recordLawyer();
+            }
+            default -> {
+                println("Option no-existent.\n");
+            }
+        }
     }
     public static int recordLawyer() {
         /*
@@ -32,7 +46,7 @@ public class ServiceLawyer {
         Long oab = sc.nextLong();
 
         Lawyer lawyer = null;
-        if (!lawyers.containsKey(oab)) {
+        if (!lawyers.containsKey(codeLawyer) || !lawyers.containsKey(oab)) {
             sc.nextLine();
             System.out.println("Name: ");
             String name = sc.nextLine();

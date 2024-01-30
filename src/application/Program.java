@@ -16,7 +16,8 @@ public class Program {
         System.out.println("Who are you in our system?\n\n" +
                 "B/b - Boss lawyer\n" +
                 "L/l - A lawyer, but not the boss\n" +
-                "P/p - Another person\n");
+                "P/p - Another person\n" +
+                "O/o - Nobody, I just wanna log out.\n");
         String option = sc.nextLine();
 
         switch(option.toLowerCase()){
@@ -24,10 +25,14 @@ public class Program {
                 ServiceBossLawyer.doLoginBossLawyer();
             }
             case "l" -> {
-                ServiceLawyer.doLoginLawyer();
+                ServiceLawyer.doValidationLawyer();
             }
             case "p" -> {
                 ServicePerson.defineTypePerson();
+            }
+            case "o" -> {
+                println("\"Losing you is such a pity, I will miss you, farewell!\"\n");
+                System.exit(0);
             }
             default -> {
                println("Option no-existent.\n");

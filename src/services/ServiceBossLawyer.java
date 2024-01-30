@@ -51,8 +51,8 @@ public class ServiceBossLawyer {
 
             switch (option) {
                 case 0 -> {
+                    sc.nextLine();
                     doFirstInteraction();
-                    break;
                 }
                 case 1 -> {
 
