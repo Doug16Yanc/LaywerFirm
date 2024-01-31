@@ -15,7 +15,35 @@ public class ServicePerson {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
     private static final List<Person> persons = new ArrayList<>();
+    public static void defineTypePerson(){
+        System.out.println("Have you already registered in our system?\n Y/y = Yes \n N/n - Not\n");
+        String option = sc.nextLine();
 
+        switch (option.toLowerCase()){
+            case "y" -> {
+                System.out.println("L/l - Legal person\n N/n - Natural person\n");
+                String choose = sc.nextLine();
+
+                switch (choose.toLowerCase()){
+                    case "l" -> {
+                        ServiceLegal.doLoginLegalPerson();
+                    }
+                    case "n" -> {
+                        ServiceNatural.doLoginNaturalPerson();
+                    }
+                    default -> {
+                        println("Option no-existent.\n");
+                    }
+                }
+            }
+            case "n" -> {
+                recordPerson();
+            }
+            default -> {
+                println("Option no-existent.\n");
+            }
+        }
+    }
     public static int recordPerson(){
 
         LegalPerson legalPerson = new LegalPerson();
@@ -61,20 +89,5 @@ public class ServicePerson {
         return 1;
     }
 
-    public static void defineTypePerson(){
-        System.out.println("What type person?\n L/l - Legal person \n N/n - Natural person\n");
-        String option = sc.nextLine();
 
-        switch (option.toLowerCase()){
-            case "l" -> {
-                ServiceLegal.doLoginLegalPerson();
-            }
-            case "n" -> {
-                ServiceNatural.doLoginNaturalPerson();
-            }
-            default -> {
-                println("Option no-existent.\n");
-            }
-        }
-    }
 }

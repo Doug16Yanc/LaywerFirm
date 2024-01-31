@@ -1,14 +1,12 @@
 package services;
 
 import entities.LegalPerson;
-import entities.NaturalPerson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static repositories.GenerationImplementation.generateIdPerson;
 import static utilities.Utility.*;
 
 public class ServiceLegal {
@@ -38,32 +36,13 @@ public class ServiceLegal {
 
     }
     public static int recordLegalPerson(LegalPerson legalPerson){
-        Long id = (long) generateIdPerson();
 
         System.out.println("EIN:");
         Long ein = sc.nextLong();
 
         if (legalPersons.containsKey(ein)) {
 
-            System.out.println("Name:");
-            String name = sc.nextLine();
-
-            System.out.println("District:");
-            String district = sc.nextLine();
-
-            System.out.println("Zip code:");
-            String zip = sc.nextLine();
-
-            System.out.println("Telephone:");
-            String telephone = sc.nextLine();
-
-            System.out.println("Email:");
-            String email = sc.nextLine();
-
-            System.out.println("Password:");
-            String password = sc.nextLine();
-
-            legalPerson = new LegalPerson(id, name, district, zip, telephone, email, password, ein);
+            legalPerson = new LegalPerson(legalPerson.getIdPerson(), legalPerson.getNamePerson(), legalPerson.getDistrictPerson(), legalPerson.getZipCode(), legalPerson.getTelephonePerson(), legalPerson.getEmailPerson(), legalPerson.getPassword(), ein);
 
             legalPersons.computeIfAbsent(legalPerson.getIdPerson(), k -> new ArrayList<>()).add(legalPerson);
             legalPersons.computeIfAbsent(legalPerson.getEin(), k -> new ArrayList<>()).add(legalPerson);

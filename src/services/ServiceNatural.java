@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static repositories.GenerationImplementation.generateIdPerson;
 import static utilities.Utility.*;
 
 public class ServiceNatural {
@@ -34,38 +33,16 @@ public class ServiceNatural {
                 println("SSN or password not recognized.\n");
             }
         } while(attempts > 0);
-
-
     }
 
     public static int recordNaturalPerson(NaturalPerson naturalPerson){
-
-        Long id = (long) generateIdPerson();
 
         System.out.println("SSN:");
         Long ssn = sc.nextLong();
 
         if (naturalPersons.containsKey(ssn)) {
 
-            System.out.println("Name:");
-            String name = sc.nextLine();
-
-            System.out.println("District:");
-            String district = sc.nextLine();
-
-            System.out.println("Zip code:");
-            String zip = sc.nextLine();
-
-            System.out.println("Telephone:");
-            String telephone = sc.nextLine();
-
-            System.out.println("Email:");
-            String email = sc.nextLine();
-
-            System.out.println("Password:");
-            String password = sc.nextLine();
-
-            naturalPerson = new NaturalPerson(id, name, district, zip, telephone, email, password, ssn);
+            naturalPerson = new NaturalPerson(naturalPerson.getIdPerson(), naturalPerson.getNamePerson(), naturalPerson.getDistrictPerson(), naturalPerson.getZipCode(), naturalPerson.getTelephonePerson(), naturalPerson.getEmailPerson(), naturalPerson.getPassword(), ssn);
 
             naturalPersons.computeIfAbsent(naturalPerson.getIdPerson(), k -> new ArrayList<>()).add(naturalPerson);
             naturalPersons.computeIfAbsent(naturalPerson.getSsn(), k -> new ArrayList<>()).add(naturalPerson);
