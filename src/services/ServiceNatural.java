@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static repositories.GenerationImplementation.generateIdPerson;
-import static utilities.Utility.println;
-import static utilities.Utility.sc;
+import static utilities.Utility.*;
 
 public class ServiceNatural {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
@@ -71,11 +70,25 @@ public class ServiceNatural {
             naturalPersons.computeIfAbsent(naturalPerson.getIdPerson(), k -> new ArrayList<>()).add(naturalPerson);
             naturalPersons.computeIfAbsent(naturalPerson.getSsn(), k -> new ArrayList<>()).add(naturalPerson);
 
+            proofNaturalPerson(naturalPerson);
+
         }
         else {
             println("Sorry, but this people was already registered in our system.\n");
         }
         return 1;
+    }
+
+    public static void proofNaturalPerson(NaturalPerson naturalPerson){
+        println("           NATURAL PERSON PROOF RECORD         \n" +
+                "           > Name : " + naturalPerson.getNamePerson() +
+                "           > Id person : " + naturalPerson.getIdPerson() +
+                "           > SSN : " + naturalPerson.getSsn() +
+                "           > District : " + naturalPerson.getDistrictPerson() +
+                "           > Zip code : " + naturalPerson.getZipCode() +
+                "           > Telephone : " + naturalPerson.getTelephonePerson() +
+                "           > Email : " + naturalPerson.getEmailPerson() +
+                "           > Date and hour : " + giveHour());
     }
     public static int searchNaturalPerson(){
         return 1;
