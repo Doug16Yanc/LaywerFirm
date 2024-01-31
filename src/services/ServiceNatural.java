@@ -1,13 +1,13 @@
 package services;
 
 import entities.NaturalPerson;
-import entities.Person;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static repositories.GenerationImplementation.generateIdPerson;
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
 
@@ -40,9 +40,41 @@ public class ServiceNatural {
     }
 
     public static int recordNaturalPerson(NaturalPerson naturalPerson){
-        naturalPersons.computeIfAbsent(naturalPerson.getIdPerson(), k -> new ArrayList<>()).add(naturalPerson);
-        naturalPersons.computeIfAbsent(naturalPerson.getSsn(), k -> new ArrayList<>()).add(naturalPerson);
 
+        Long id = (long) generateIdPerson();
+
+        System.out.println("SSN:");
+        Long ssn = sc.nextLong();
+
+        if (naturalPersons.containsKey(ssn)) {
+
+            System.out.println("Name:");
+            String name = sc.nextLine();
+
+            System.out.println("District:");
+            String district = sc.nextLine();
+
+            System.out.println("Zip code:");
+            String zip = sc.nextLine();
+
+            System.out.println("Telephone:");
+            String telephone = sc.nextLine();
+
+            System.out.println("Email:");
+            String email = sc.nextLine();
+
+            System.out.println("Password:");
+            String password = sc.nextLine();
+
+            naturalPerson = new NaturalPerson(id, name, district, zip, telephone, email, password, ssn);
+
+            naturalPersons.computeIfAbsent(naturalPerson.getIdPerson(), k -> new ArrayList<>()).add(naturalPerson);
+            naturalPersons.computeIfAbsent(naturalPerson.getSsn(), k -> new ArrayList<>()).add(naturalPerson);
+
+        }
+        else {
+            println("Sorry, but this people was already registered in our system.\n");
+        }
         return 1;
     }
     public static int searchNaturalPerson(){

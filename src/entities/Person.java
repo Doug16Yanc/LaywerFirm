@@ -4,7 +4,7 @@ public abstract class Person {
     private Long idPerson;
     private String namePerson;
     private String districtPerson;
-    private String cepPerson;
+    private String zipCode;
     private String telephonePerson;
     private String emailPerson;
     private String password;
@@ -12,11 +12,11 @@ public abstract class Person {
     public Person(){
 
     }
-    public Person(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password){
+    public Person(Long idPerson, String namePerson, String districtPerson, String zipCode, String telephonePerson, String emailPerson, String password){
         this.idPerson = idPerson;
         this.namePerson = namePerson;
         this.districtPerson = districtPerson;
-        this.cepPerson = cepPerson;
+        this.zipCode = zipCode;
         this.telephonePerson = telephonePerson;
         this.emailPerson = emailPerson;
         this.password = password;
@@ -46,12 +46,12 @@ public abstract class Person {
         this.districtPerson = districtPerson;
     }
 
-    public String getCepPerson() {
-        return cepPerson;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setCepPerson(String cepPerson) {
-        this.cepPerson = cepPerson;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getTelephonePerson() {
