@@ -1,6 +1,6 @@
 package services;
 
-import entities.Lawyer;
+import entities.persons.Lawyer;
 import repositories.GenerationImplementation;
 
 import java.util.ArrayList;

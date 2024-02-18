@@ -1,4 +1,4 @@
-package entities;
+package entities.persons;
 
 public class Lawyer {
     private Long codeLawyer;

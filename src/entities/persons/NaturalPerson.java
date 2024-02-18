@@ -1,4 +1,6 @@
-package entities;
+package entities.persons;
+
+import entities.persons.Person;
 
 public class NaturalPerson extends Person {
     private Long ssn;

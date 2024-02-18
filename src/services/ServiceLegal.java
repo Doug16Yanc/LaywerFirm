@@ -1,6 +1,6 @@
 package services;
 
-import entities.LegalPerson;
+import entities.persons.LegalPerson;
 
 import java.util.ArrayList;
 import java.util.HashMap;

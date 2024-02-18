@@ -1,9 +1,8 @@
 package services;
 
-import entities.LegalPerson;
-import entities.NaturalPerson;
-import entities.Person;
-import utilities.Utility;
+import entities.persons.LegalPerson;
+import entities.persons.NaturalPerson;
+import entities.persons.Person;
 
 import java.util.*;
 

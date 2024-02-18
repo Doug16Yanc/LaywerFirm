@@ -1,7 +1,7 @@
 package services;
 
-import entities.BossLawyer;
-import entities.Lawyer;
+import entities.persons.BossLawyer;
+import entities.persons.Lawyer;
 
 import static application.Program.doFirstInteraction;
 import static utilities.Utility.println;

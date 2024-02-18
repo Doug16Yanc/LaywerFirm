@@ -1,4 +1,4 @@
-package entities;
+package entities.court;
 
 import java.time.LocalDateTime;
 

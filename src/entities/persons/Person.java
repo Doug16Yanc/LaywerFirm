@@ -1,4 +1,4 @@
-package entities;
+package entities.persons;
 
 public abstract class Person {
     private Long idPerson;

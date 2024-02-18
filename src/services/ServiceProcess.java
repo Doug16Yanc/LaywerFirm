@@ -1,6 +1,6 @@
 package services;
 
-import entities.Process;
+import entities.court.Process;
 import enumerations.ProcessSituation;
 import repositories.GenerationImplementation;
 

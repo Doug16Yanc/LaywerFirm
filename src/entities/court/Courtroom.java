@@ -1,4 +1,4 @@
-package entities;
+package entities.court;
 
 public class Courtroom {
     private String descriptionCourtroom;

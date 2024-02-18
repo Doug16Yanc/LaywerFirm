@@ -1,4 +1,6 @@
-package entities;
+package entities.persons;
+
+import entities.persons.Person;
 
 public class LegalPerson extends Person {
     private Long ein;
