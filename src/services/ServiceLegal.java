@@ -2,17 +2,12 @@ package services;
 
 import entities.persons.LegalPerson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static utilities.Utility.*;
 
 public class ServiceLegal {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
-
-    private static final Map<Long, List<LegalPerson>> legalPersons = new HashMap<>();
 
     public static void doLoginLegalPerson(){
         int attempts = 3;
@@ -25,48 +20,26 @@ public class ServiceLegal {
 
             System.out.println("Password:");
             String password = sc.nextLine();
-
-            if (legalPersons.containsKey(ssn) && legalPersons.containsKey(password)){
-                System.out.println("");
-            }
-            else{
-                println("SSN or password not recognized.\n");
-            }
         } while(attempts > 0);
 
     }
-    public static int recordLegalPerson(LegalPerson legalPerson){
 
-        System.out.println("EIN:");
-        Long ein = sc.nextLong();
-
-        if (legalPersons.containsKey(ein)) {
-
-            legalPerson = new LegalPerson(legalPerson.getIdPerson(), legalPerson.getNamePerson(), legalPerson.getDistrictPerson(), legalPerson.getZipCode(), legalPerson.getTelephonePerson(), legalPerson.getEmailPerson(), legalPerson.getPassword(), ein);
-
-            legalPersons.computeIfAbsent(legalPerson.getIdPerson(), k -> new ArrayList<>()).add(legalPerson);
-            legalPersons.computeIfAbsent(legalPerson.getEin(), k -> new ArrayList<>()).add(legalPerson);
-
-            proofLegalRecord(legalPerson);
-        }
-        else {
-            println("Sorry, but this people was already registered in our system.\n");
-        }
-        return 1;
-    }
-
-    public static void proofLegalRecord(LegalPerson legalPerson){
-        println("           LEGAL PERSON PROOF RECORD           \n" +
-                "           > Name : " + legalPerson.getNamePerson() +
-                "           > Id person : " + legalPerson.getIdPerson() +
-                "           > EIN : " + legalPerson.getEin() +
-                "           > District : " + legalPerson.getDistrictPerson() +
-                "           > Zip code : " + legalPerson.getZipCode() +
-                "           > Telephone : " + legalPerson.getTelephonePerson() +
-                "           > Email : " + legalPerson.getEmailPerson() +
-                "           > Date and hour : " + giveHour());
+    public static String proofLegalRecord(LegalPerson legalPerson){
+        Date currentDate = new Date();
+        return String.format("           LEGAL PERSON PROOF RECORD           \n" +
+                "\n         > Name : " + legalPerson.getNamePerson() +
+                "\n         > Id person : " + legalPerson.getIdPerson() +
+                "\n         > EIN : " + legalPerson.getEin() +
+                "\n         > District : " + legalPerson.getDistrictPerson() +
+                "\n         > Zip code : " + legalPerson.getZipCode() +
+                "\n         > Telephone : " + legalPerson.getTelephonePerson() +
+                "\n         > Email : " + legalPerson.getEmailPerson() +
+                "\n         > Date and hour : " + currentDate);
     }
     public static int searchLegalPerson(){
+
+        System.out.println("Enter id person: ");
+        int id = sc.nextInt();
         return 1;
     }
     public static String consultLegalPerson(LegalPerson legalPerson){

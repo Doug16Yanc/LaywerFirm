@@ -1,24 +1,17 @@
 package entities.persons;
 
-import entities.persons.Person;
-
 public class NaturalPerson extends Person {
-    private Long ssn;
-
-    public NaturalPerson() {
-
-    }
-
-    public NaturalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password, Long ssn) {
+    private Integer ssn;
+    public NaturalPerson(Integer idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password, Integer ssn) {
         super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson, password);
         this.ssn = ssn;
     }
 
-    public Long getSsn() {
+    public Integer getSsn() {
         return ssn;
     }
 
-    public void setSsn(Long ssn) {
+    public void setSsn(Integer ssn) {
         this.ssn = ssn;
     }
 }

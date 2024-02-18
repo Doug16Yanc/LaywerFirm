@@ -77,10 +77,10 @@ public class ServiceBossLawyer {
 
                     switch (personType.toLowerCase()){
                         case "l" -> {
-
+                            ServiceLegal.searchLegalPerson();
                         }
                         case "n" -> {
-
+                            ServiceNatural.searchNaturalPerson();
                         }
                         default -> {
                             System.out.println("Option no-existent.\n");

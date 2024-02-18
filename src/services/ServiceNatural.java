@@ -2,10 +2,7 @@ package services;
 
 import entities.persons.NaturalPerson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static utilities.Utility.*;
 
@@ -35,37 +32,18 @@ public class ServiceNatural {
         } while(attempts > 0);
     }
 
-    public static int recordNaturalPerson(NaturalPerson naturalPerson){
 
-        System.out.println("SSN:");
-        Long ssn = sc.nextLong();
-
-        if (naturalPersons.containsKey(ssn)) {
-
-            naturalPerson = new NaturalPerson(naturalPerson.getIdPerson(), naturalPerson.getNamePerson(), naturalPerson.getDistrictPerson(), naturalPerson.getZipCode(), naturalPerson.getTelephonePerson(), naturalPerson.getEmailPerson(), naturalPerson.getPassword(), ssn);
-
-            naturalPersons.computeIfAbsent(naturalPerson.getIdPerson(), k -> new ArrayList<>()).add(naturalPerson);
-            naturalPersons.computeIfAbsent(naturalPerson.getSsn(), k -> new ArrayList<>()).add(naturalPerson);
-
-            proofNaturalPerson(naturalPerson);
-
-        }
-        else {
-            println("Sorry, but this people was already registered in our system.\n");
-        }
-        return 1;
-    }
-
-    public static void proofNaturalPerson(NaturalPerson naturalPerson){
-        println("           NATURAL PERSON PROOF RECORD         \n" +
-                "           > Name : " + naturalPerson.getNamePerson() +
-                "           > Id person : " + naturalPerson.getIdPerson() +
-                "           > SSN : " + naturalPerson.getSsn() +
-                "           > District : " + naturalPerson.getDistrictPerson() +
-                "           > Zip code : " + naturalPerson.getZipCode() +
-                "           > Telephone : " + naturalPerson.getTelephonePerson() +
-                "           > Email : " + naturalPerson.getEmailPerson() +
-                "           > Date and hour : " + giveHour());
+    public static String proofNaturalPerson(NaturalPerson naturalPerson){
+        Date currentDate = new Date();
+        return String.format("           NATURAL PERSON PROOF RECORD         \n" +
+                "\n         > Name : " + naturalPerson.getNamePerson() +
+                "\n         > Id person : " + naturalPerson.getIdPerson() +
+                "\n         > SSN : " + naturalPerson.getSsn() +
+                "\n          > District : " + naturalPerson.getDistrictPerson() +
+                "\n          > Zip code : " + naturalPerson.getZipCode() +
+                "\n          > Telephone : " + naturalPerson.getTelephonePerson() +
+                "\n          > Email : " + naturalPerson.getEmailPerson() +
+                "\n          > Date and hour : " + currentDate);
     }
     public static int searchNaturalPerson(){
         return 1;

@@ -44,20 +44,21 @@ public class ServicePerson {
         }
     }
     public static int recordPerson(){
+        Map<Integer, List<NaturalPerson>> naturalPersons = new HashMap<>();
+        Map<Integer, List<LegalPerson>> legalPersons = new HashMap<>();
 
-        LegalPerson legalPerson = new LegalPerson();
-        NaturalPerson naturalPerson = new NaturalPerson();
         println("Register persons service.\n");
-        Long idPerson = (long) generateIdPerson();
+        int idPerson =  generateIdPerson();
+
 
         System.out.println("Name:");
         String name = sc.nextLine();
 
-        System.out.println("Address:");
-        String address = sc.nextLine();
-
         System.out.println("District:");
         String district = sc.nextLine();
+
+        System.out.println("Zip Code:");
+        String zipCode = sc.nextLine();
 
         System.out.println("Cep person:");
         String cep = sc.nextLine();
@@ -75,11 +76,24 @@ public class ServicePerson {
         String option = sc.nextLine();
 
         switch(option.toLowerCase()){
-            case "n" -> {
-                ServiceLegal.recordLegalPerson(legalPerson);
-            }
             case "l" -> {
-                ServiceNatural.recordNaturalPerson(naturalPerson);
+                System.out.println("EIN:");
+                Integer ein = sc.nextInt();
+
+                LegalPerson legalPerson = new LegalPerson(idPerson, name, district, zipCode, cep, telephone, email, password, ein);
+                legalPersons.put(legalPerson.getIdPerson(), Collections.singletonList(legalPerson));
+                legalPersons.put(ein,Collections.singletonList(legalPerson));
+                println(ServiceLegal.proofLegalRecord(legalPerson));
+
+            }
+            case "n" -> {
+                System.out.println("SSN:");
+                Integer ssn = sc.nextInt();
+
+                NaturalPerson naturalPerson = new NaturalPerson(idPerson, name, district, zipCode, telephone, email, password, ssn);
+                naturalPersons.put(naturalPerson.getIdPerson(), Collections.singletonList(naturalPerson));
+                naturalPersons.put(ssn, Collections.singletonList(naturalPerson));
+                println(ServiceNatural.proofNaturalPerson(naturalPerson));
             }
             default -> {
                 println("Option no-existent.\n");

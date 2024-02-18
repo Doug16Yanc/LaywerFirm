@@ -1,24 +1,19 @@
 package entities.persons;
 
-import entities.persons.Person;
-
 public class LegalPerson extends Person {
-    private Long ein;
+    private Integer ein;
 
-    public LegalPerson() {
 
-    }
-
-    public LegalPerson(Long idPerson, String namePerson, String districtPerson, String cepPerson, String telephonePerson, String emailPerson, String password, Long ein) {
+    public LegalPerson(Integer idPerson, String namePerson, String districtPerson,  String zipCode,String cepPerson, String telephonePerson, String emailPerson, String password, Integer ein) {
         super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson, password);
         this.ein = ein;
     }
 
-    public Long getEin() {
+    public Integer getEin() {
         return ein;
     }
 
-    public void setEin(Long ein) {
+    public void setEin(Integer ein) {
         this.ein = ein;
     }
 }

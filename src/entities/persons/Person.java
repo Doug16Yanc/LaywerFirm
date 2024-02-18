@@ -1,7 +1,7 @@
 package entities.persons;
 
 public abstract class Person {
-    private Long idPerson;
+    private Integer idPerson;
     private String namePerson;
     private String districtPerson;
     private String zipCode;
@@ -9,10 +9,7 @@ public abstract class Person {
     private String emailPerson;
     private String password;
 
-    public Person(){
-
-    }
-    public Person(Long idPerson, String namePerson, String districtPerson, String zipCode, String telephonePerson, String emailPerson, String password){
+    public Person(Integer idPerson, String namePerson, String districtPerson, String zipCode, String telephonePerson, String emailPerson, String password){
         this.idPerson = idPerson;
         this.namePerson = namePerson;
         this.districtPerson = districtPerson;
@@ -22,11 +19,11 @@ public abstract class Person {
         this.password = password;
     }
 
-    public Long getIdPerson() {
+    public Integer getIdPerson() {
         return idPerson;
     }
 
-    public void setIdPerson(Long idPerson) {
+    public void setIdPerson(Integer idPerson) {
         this.idPerson = idPerson;
     }
 
