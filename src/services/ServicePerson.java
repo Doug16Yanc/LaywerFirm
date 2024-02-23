@@ -6,6 +6,7 @@ import entities.persons.Person;
 
 import java.util.*;
 
+import static application.Program.doFirstInteraction;
 import static repositories.GenerationImplementation.generateIdPerson;
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
@@ -15,6 +16,8 @@ public class ServicePerson {
 
     private static final List<Person> persons = new ArrayList<>();
     public static void defineTypePerson(){
+        Map<Integer, List<NaturalPerson>> naturalPersons = new HashMap<>();
+        Map<Integer, List<LegalPerson>> legalPersons = new HashMap<>();
         System.out.println("Have you already registered in our system?\n Y/y = Yes \n N/n - Not\n");
         String option = sc.nextLine();
 
@@ -25,10 +28,10 @@ public class ServicePerson {
 
                 switch (choose.toLowerCase()){
                     case "l" -> {
-                        ServiceLegal.doLoginLegalPerson();
+                        ServiceLegal.doLoginLegalPerson(legalPersons);
                     }
                     case "n" -> {
-                        ServiceNatural.doLoginNaturalPerson();
+                        ServiceNatural.doLoginNaturalPerson(naturalPersons);
                     }
                     default -> {
                         println("Option no-existent.\n");
@@ -36,16 +39,14 @@ public class ServicePerson {
                 }
             }
             case "n" -> {
-                recordPerson();
+                recordPerson(naturalPersons, legalPersons);
             }
             default -> {
                 println("Option no-existent.\n");
             }
         }
     }
-    public static int recordPerson(){
-        Map<Integer, List<NaturalPerson>> naturalPersons = new HashMap<>();
-        Map<Integer, List<LegalPerson>> legalPersons = new HashMap<>();
+    public static int recordPerson(Map<Integer, List<NaturalPerson>> naturalPersons, Map<Integer, List<LegalPerson>> legalPersons){
 
         println("Register persons service.\n");
         int idPerson =  generateIdPerson();
@@ -59,9 +60,6 @@ public class ServicePerson {
 
         System.out.println("Zip Code:");
         String zipCode = sc.nextLine();
-
-        System.out.println("Cep person:");
-        String cep = sc.nextLine();
 
         System.out.println("Telephone:");
         String telephone = sc.nextLine();
@@ -80,7 +78,7 @@ public class ServicePerson {
                 System.out.println("EIN:");
                 Integer ein = sc.nextInt();
 
-                LegalPerson legalPerson = new LegalPerson(idPerson, name, district, zipCode, cep, telephone, email, password, ein);
+                LegalPerson legalPerson = new LegalPerson(idPerson, name, district, zipCode, telephone, email, password, ein);
                 legalPersons.put(legalPerson.getIdPerson(), Collections.singletonList(legalPerson));
                 legalPersons.put(ein,Collections.singletonList(legalPerson));
                 println(ServiceLegal.proofLegalRecord(legalPerson));
@@ -99,6 +97,7 @@ public class ServicePerson {
                 println("Option no-existent.\n");
             }
         }
+        doFirstInteraction();
         return 1;
     }
 

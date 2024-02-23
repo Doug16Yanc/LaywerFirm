@@ -67,13 +67,17 @@ public class ServiceProcess {
         return true;
     }
     public static void listProcess(Process process){
-        for (Process entry : processes.keySet()){
-            println(String.format("Process\n" +
-                    " > Code process : " + process.getCodeProcess() + "\n" +
-                    " >  Aperture process : " + process.getApertureProcess() + "\n" +
-                    " >  Conclusion process : " + process.getConclusionProcess() + "\n" +
-                    " >  Description process : " + process.getDescriptionProcess() + "\n" +
-                    " >  Situation process : " + process.getProcessSituation()));
+        if (!processes.isEmpty()) {
+            for (Process entry : processes.keySet()) {
+                println(String.format("Process\n" +
+                        " > Code process : " + process.getCodeProcess() + "\n" +
+                        " >  Aperture process : " + process.getApertureProcess() + "\n" +
+                        " >  Conclusion process : " + process.getConclusionProcess() + "\n" +
+                        " >  Description process : " + process.getDescriptionProcess() + "\n" +
+                        " >  Situation process : " + process.getProcessSituation()));
+            }
+        } else {
+            println("No processes recorded.\n");
         }
     }
 }

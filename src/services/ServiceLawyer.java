@@ -8,14 +8,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static application.Program.doFirstInteraction;
 import static utilities.Utility.println;
 import static utilities.Utility.sc;
 
 public class ServiceLawyer {
 
-    private static final Map<Long, Boolean> idMap = new HashMap<>();
+    public static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    private static final Map<Long, List<Lawyer>> lawyers = new HashMap<>();
+    public static final Map<Long, List<Lawyer>> lawyers = new HashMap<>();
 
     public static void doValidationLawyer(){
         println("Lawyer validation.\n");
@@ -24,7 +25,7 @@ public class ServiceLawyer {
 
         switch(option.toLowerCase()){
             case "y" -> {
-                doLogin();
+                doLoginLawyer();
             }
             case "n" -> {
                 recordLawyer();
@@ -74,6 +75,7 @@ public class ServiceLawyer {
             println("Sorry, but this lawyer was already registered in our system.");
         }
         proofRecord(lawyer);
+        doFirstInteraction();
         return Math.toIntExact(codeLawyer);
 
     }
@@ -89,7 +91,7 @@ public class ServiceLawyer {
                 " > email : " + lawyer.getEmail());
     }
 
-    public static boolean loginLawyer(){
+    public static boolean doLoginLawyer(){
         println("Enter your code lawyer in system or oab lawyer, so, you can enter with username and password:\n");
 
         System.out.println("1-Code lawyer:\n2-OAB\n");
@@ -102,6 +104,7 @@ public class ServiceLawyer {
 
                 if (lawyers.containsKey(code)){
                     println("Code found.\n");
+                    doLogin();
                 }
                 else{
                     println("Sorry, not found.\n");
@@ -113,6 +116,7 @@ public class ServiceLawyer {
 
                 if (lawyers.containsKey(oab)){
                     println("Oab found.\n");
+                    doLogin();
                 }
                 else{
                     println("Sorry, not found.\n");
@@ -125,28 +129,41 @@ public class ServiceLawyer {
         return true;
     }
 
-    public static int doLogin(){
+    public static int doLogin() {
         int attempts = 3;
+        boolean validation = false;
+        Lawyer helpLawyer = null;
         println("You have only three chances.\n");
-        do{
+        sc.nextLine();
+        do {
             System.out.println("Username:");
             String username = sc.nextLine();
 
             System.out.println("Password:");
             String password = sc.nextLine();
 
-            if (lawyers.containsKey(username) && lawyers.containsKey(password)){
-                println("Login successfully!\n");
+            for (List<Lawyer> lawyerList : lawyers.values()) {
+                for (Lawyer lawyer : lawyerList) {
+                    if (lawyer.getUsername().equals(username) && lawyer.getPassword().equals(password)) {
+                        println("Login successfully!\n");
+                        helpLawyer = lawyer;
+                        validation = true;
+                        break;
+                    }
+                }
+                if (validation) {
+                    interactesLawyer(helpLawyer);
+                }
+                else{
+                    println("Username or recognized not recognized.\n");
+                    attempts--;
+                }
             }
-            else{
-                println("Username or recognized not recognized.\n");
-                attempts--;
-            }
-            if (attempts == 0){
-                break;
-            }
-        } while(attempts > 0);
+        } while (attempts > 0) ;
         return 1;
+    }
+    public static void interactesLawyer(Lawyer lawyer){
+        println("Welcome to your page, dearest " + lawyer.getNameLawyer() + "\n");
     }
 
     public static int searchLawyer(){
@@ -207,17 +224,23 @@ public class ServiceLawyer {
 
     }
     public static void listLawyers(Lawyer lawyer){
-        for (Map.Entry<Long, List<Lawyer>> entry : lawyers.entrySet()){
-            println("Data" +
-                    " > Code lawyer=" + lawyer.getCodeLawyer() + "\n" +
-                    " > OAB lawyer=" + lawyer.getOabLawyer()+ "\n" +
-                    " > name lawyer : " + lawyer.getNameLawyer() + "\n" +
-                    " > address : " + lawyer.getAddress() +
-                    " > district : " + lawyer.getDistrict() + "\n" +
-                    " > zip code : " + lawyer.getZipCode() + "\n" +
-                    " > telephone number: " + lawyer.getTelephone() + "\n" +
-                    " > email : " + lawyer.getEmail() +
-                    '}');
+        if (!lawyers.isEmpty()) {
+
+            for (Map.Entry<Long, List<Lawyer>> entry : lawyers.entrySet()) {
+                println("Data" +
+                        " > Code lawyer=" + lawyer.getCodeLawyer() + "\n" +
+                        " > OAB lawyer=" + lawyer.getOabLawyer() + "\n" +
+                        " > name lawyer : " + lawyer.getNameLawyer() + "\n" +
+                        " > address : " + lawyer.getAddress() +
+                        " > district : " + lawyer.getDistrict() + "\n" +
+                        " > zip code : " + lawyer.getZipCode() + "\n" +
+                        " > telephone number: " + lawyer.getTelephone() + "\n" +
+                        " > email : " + lawyer.getEmail() +
+                        '}');
+            }
+        }
+        else {
+            println("No lawyers recorded.\n");
         }
     }
 }

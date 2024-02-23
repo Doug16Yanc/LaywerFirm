@@ -9,18 +9,39 @@ import static utilities.Utility.*;
 public class ServiceLegal {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    public static void doLoginLegalPerson(){
+    public static void doLoginLegalPerson(Map<Integer, List<LegalPerson>> legalPersons){
+        boolean legalValidation = false;
         int attempts = 3;
         println("Enter your ssn, so, you can enter with your password:\n" +
                 "You have only three chances.\n");
 
-        do{
-            System.out.println("SSN");
-            String ssn = sc.nextLine();
+        System.out.println("Enter your id:");
+        int id = sc.nextInt();
 
-            System.out.println("Password:");
-            String password = sc.nextLine();
-        } while(attempts > 0);
+        if (legalPersons.containsKey(id)) {
+            do {
+                System.out.println("EIIN");
+                String ein = sc.nextLine();
+
+                System.out.println("Password:");
+                String password = sc.nextLine();
+
+                for (LegalPerson legalPerson : legalPersons.get(id)) {
+                    if (legalPerson.getEin().equals(ein) && legalPerson.getPassword().equals(password)){
+                        System.out.println("Login sucessfully!\n");
+                        legalValidation = true;
+                        break;
+                    }
+                }
+                if (!legalValidation){
+                    System.out.println("EIN or password not recognized.\n");
+                    attempts--;
+                }
+            } while (attempts > 0);
+        }
+        else {
+            println("Person not found.\n");
+        }
 
     }
 

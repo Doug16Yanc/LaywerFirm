@@ -1,5 +1,6 @@
 package services;
 
+import entities.court.Process;
 import entities.persons.BossLawyer;
 import entities.persons.Lawyer;
 
@@ -55,10 +56,10 @@ public class ServiceBossLawyer {
                     doFirstInteraction();
                 }
                 case 1 -> {
-
+                    queryDataBoss(bossLawyer);
                 }
                 case 2 -> {
-
+                    ServiceProcess.listProcess(new Process());
                 }
                 case 3 -> {
                     ServiceLawyer.recordLawyer();
@@ -96,5 +97,9 @@ public class ServiceBossLawyer {
             }
         } while (option != 0);
 
+    }
+    public static void queryDataBoss(BossLawyer bossLawyer){
+        println("Data boss lawyer\n" +
+                " > ");
     }
 }

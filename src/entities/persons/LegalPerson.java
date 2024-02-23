@@ -4,8 +4,8 @@ public class LegalPerson extends Person {
     private Integer ein;
 
 
-    public LegalPerson(Integer idPerson, String namePerson, String districtPerson,  String zipCode,String cepPerson, String telephonePerson, String emailPerson, String password, Integer ein) {
-        super(idPerson, namePerson, districtPerson, cepPerson, telephonePerson, emailPerson, password);
+    public LegalPerson(Integer idPerson, String namePerson, String districtPerson,  String zipCode, String telephonePerson, String emailPerson, String password, Integer ein) {
+        super(idPerson, namePerson, districtPerson, zipCode, telephonePerson, emailPerson, password);
         this.ein = ein;
     }
 

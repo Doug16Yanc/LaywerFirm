@@ -13,6 +13,7 @@ public class Program {
     }
     public static void doFirstInteraction(){
         println("Welcome to lawyer firm.\n");
+
         System.out.println("Who are you in our system?\n\n" +
                 "B/b - Boss lawyer\n" +
                 "L/l - A lawyer, but not the boss\n" +
@@ -20,7 +21,7 @@ public class Program {
                 "O/o - Nobody, I just wanna log out.\n");
         String option = sc.nextLine();
 
-        switch(option.toLowerCase()){
+        switch (option.toLowerCase()) {
             case "b" -> {
                 ServiceBossLawyer.doLoginBossLawyer();
             }
@@ -33,9 +34,10 @@ public class Program {
             case "o" -> {
                 println("\"Losing you is such a pity, I will miss you, farewell!\"\n");
                 System.exit(0);
+                break;
             }
             default -> {
-               println("Option no-existent.\n");
+                println("Option no-existent.\n");
             }
         }
     }

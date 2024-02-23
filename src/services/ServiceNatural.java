@@ -9,27 +9,39 @@ import static utilities.Utility.*;
 public class ServiceNatural {
     private static final Map<Long, Boolean> idMap = new HashMap<>();
 
-    private static final Map<Long, List<NaturalPerson>> naturalPersons = new HashMap<>();
-
-    public static void doLoginNaturalPerson(){
+    public static void doLoginNaturalPerson(Map<Integer, List<NaturalPerson>> naturalPersons){
+        boolean naturalValidation = false;
         int attempts = 3;
-        println("Enter your ssn, so, you can enter with your password.\n" +
-                "You have only three chances.\n");
+        System.out.println("Enter your id: ");
+        int id = sc.nextInt();
 
-        do{
-            System.out.println("SSN");
-            String ssn = sc.nextLine();
+        if (naturalPersons.containsKey(id)) {
+            println("Enter your ssn, so, you can enter with your password.\n" +
+                    "You have only three chances.\n");
 
-            System.out.println("Password:");
-            String password = sc.nextLine();
+            do {
+                System.out.println("SSN");
+                String ssn = sc.nextLine();
 
-            if (naturalPersons.containsKey(ssn) && naturalPersons.containsKey(password)){
-                System.out.println("");
-            }
-            else{
-                println("SSN or password not recognized.\n");
-            }
-        } while(attempts > 0);
+                System.out.println("Password:");
+                String password = sc.nextLine();
+
+                for (NaturalPerson naturalPerson : naturalPersons.get(id)) {
+                    if (naturalPerson.getSsn().equals(ssn) && naturalPerson.getPassword().equals(password)){
+                        System.out.println("Login sucessfully!\n");
+                        naturalValidation = true;
+                    } else {
+                    }
+                }
+                if (!naturalValidation){
+                    println("SSN or password not recognized.\n");
+                    attempts--;
+                }
+            } while (attempts > 0) ;
+        }
+        else {
+            println("Person not found.\n");
+        }
     }
 
 

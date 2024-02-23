@@ -12,7 +12,7 @@ public class GenerationImplementation implements Generation {
         Long enter;
 
         do {
-            enter = (long) (random.nextInt(10000) + 100000000);
+            enter = (long) (random.nextInt(1000) + 100000);
         } while (idMap.containsKey(enter));
 
         idMap.put(enter, true);
@@ -23,7 +23,7 @@ public class GenerationImplementation implements Generation {
         Long enter;
 
         do {
-            enter = (long) (random.nextInt(10000) + 100000000);
+            enter = (long) (random.nextInt(1000) + 100000);
         } while (idMap.containsKey(enter));
 
         idMap.put(enter, true);
